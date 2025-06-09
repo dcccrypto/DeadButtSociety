@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$DBS - Dead Butt Society | Fueling the Future of Anal Health</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Orbitron', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1;
+            background-color: #000000;
+            overflow: hidden;
+        }
+
+        .logo {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+            to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid #ffffff;
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-button:hover {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .buy-button:hover::before {
+            left: 100%;
+        }
+
+        /* Hero Buttons Layout */
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        /* Primary button (Buy on Jupiter) */
+        .primary-btn {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .primary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Secondary button (Join X community) */
+        .secondary-btn {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            padding: 12px 30px;
+        }
+
+        .secondary-btn:hover {
+            border-color: #ffffff;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Contract Address */
+        .hero-ca {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .hero-ca h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .hero-address-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-address-box code {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-copy-btn {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-copy-btn:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .hero-copy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .hero-copy-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+            background: #000000; /* Ensure solid background */
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Lore Section */
+        .lore {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+        }
+
+        .lore-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        /* Chart Section */
+        .chart {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dexscreener Embed */
+        #dexscreener-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 125%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        @media(min-width: 1400px) {
+            #dexscreener-embed {
+                padding-bottom: 65%;
+            }
+        }
+
+        #dexscreener-embed iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .buy-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .lore-content {
+                font-size: 1rem;
+                padding: 1.5rem;
+            }
+
+            .logo {
+                max-width: 90%;
+            }
+
+            .tokenomics-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .buy-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                padding: 1.5rem;
+                min-width: 100px;
+            }
+
+            .address-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .address-box code {
+                font-size: 0.8rem;
+                padding: 15px;
+            }
+
+            .hero-address-box {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-address-box code {
+                font-size: 0.8rem;
+                padding: 15px;
+                min-width: auto;
+            }
+
+            .hero-copy-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .hero-buttons {
+                gap: 1rem;
+            }
+
+            .secondary-btn {
+                font-size: 0.9rem;
+                padding: 10px 25px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 60px; /* Prevent content from being hidden behind elements */
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Fix viewport issues for mobile browsers */
+        @supports (-webkit-touch-callout: none) {
+            html {
+                height: -webkit-fill-available;
+            }
+            
+            .hero {
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+        }
+
+        /* Prevent layout shift and ensure smooth scrolling */
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        /* Disable smooth scrolling on reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Tokenomics Section */
+        .tokenomics {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+        }
+
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tokenomics-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tokenomics-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .tokenomics-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .tokenomics-card p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* How to Buy Section */
+        .how-to-buy {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .buy-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .contract-address {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contract-address h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .address-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .address-box code {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+
+
+        /* Social Links Section */
+        .socials {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            color: #ffffff;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+        }
+
+        .social-link span:last-child {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* X Logo Styling */
+        .x-link {
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+
+        .x-logo {
+            width: 40px;
+            height: 40px;
+            filter: invert(1);
+            transition: all 0.3s ease;
+        }
+
+        .x-link:hover .x-logo {
+            filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
+        /* Glitch Effect for Title */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 0.5s infinite;
+            color: #ff0000;
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 0.5s infinite;
+            color: #00ff00;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                transform: translate(0);
+            }
+            15%, 49% {
+                transform: translate(-2px, 2px);
+            }
+        }
+
+        @keyframes glitch-2 {
+            0%, 20%, 21%, 62%, 63%, 99%, 100% {
+                transform: translate(0);
+            }
+            21%, 62% {
+                transform: translate(2px, -2px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="logo.png" alt="Dead Butt Society Logo" class="logo">
+            <h2 class="hero-subtitle">Fueling the Future of Anal Health 💨</h2>
+            
+            <!-- Contract Address Section -->
+            <div class="hero-ca">
+                <h3>Contract Address (CA):</h3>
+                <div class="hero-address-box">
+                    <code id="hero-contract">33qfNgPi1DC3Ja2oAQS9dpvuVb1jFLheEmJpvA1Vpump</code>
+                    <button class="hero-copy-btn" onclick="copyHeroContract()">Copy CA</button>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="https://jup.ag/swap/SOL-33qfNgPi1DC3Ja2oAQS9dpvuVb1jFLheEmJpvA1Vpump" 
+                   class="buy-button primary-btn" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Buy on Jupiter
+                </a>
+                <a href="#" 
+                   class="buy-button secondary-btn" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Join our X community to donate some farts 💨
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lore Section -->
+    <section class="section lore">
+        <div class="container">
+            <h2 class="section-title glitch" data-text="The Story of Bob">The Story of Bob</h2>
+            <div class="lore-content">
+                <p>a long time ago, in a land far far away, there lived a man named bob. bob liked to fart. one day, he decided to start a coin based on his farts. at first, people thought it was a joke, but as the coin gained popularity, bob realized he could use it to make a positive impact on the world. he started the "dead butt society" and used the coin to fund research into anal health. soon, the coin had created a movement. people from all over the world were talking about the importance of taking care of their anuses. bob became known as a hero and a pioneer in the field of anal care. he proved that even the most unlikely of things could be a force for good</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section class="section chart">
+        <div class="container">
+            <h2 class="section-title glitch" data-text="Live $DBS Chart">Live $DBS Chart</h2>
+            <div class="chart-container">
+                <div id="dexscreener-embed">
+                    <iframe src="https://dexscreener.com/solana/33qfNgPi1DC3Ja2oAQS9dpvuVb1jFLheEmJpvA1Vpump?embed=1&theme=dark&trades=0&info=0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section class="section tokenomics">
+        <div class="container">
+            <h2 class="section-title glitch" data-text="Tokenomics">Tokenomics</h2>
+            <div class="tokenomics-grid">
+                <div class="tokenomics-card">
+                    <h3>💀 Total Supply</h3>
+                    <p>1,000,000,000 $DBS</p>
+                </div>
+                <div class="tokenomics-card">
+                    <h3>🔥 LP Burned</h3>
+                    <p>100% Liquidity Locked</p>
+                </div>
+                <div class="tokenomics-card">
+                    <h3>⚡ Zero Tax</h3>
+                    <p>0% Buy/Sell Tax</p>
+                </div>
+                <div class="tokenomics-card">
+                    <h3>🚀 Fair Launch</h3>
+                    <p>No Presales, No BS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Buy Section -->
+    <section class="section how-to-buy">
+        <div class="container">
+            <h2 class="section-title glitch" data-text="How to Buy">How to Buy</h2>
+            <div class="buy-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Get Solana</h3>
+                    <p>Download Phantom wallet and buy SOL from an exchange like Coinbase or Binance</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Connect Wallet</h3>
+                    <p>Visit Jupiter Exchange and connect your Phantom wallet</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Swap SOL for $DBS</h3>
+                    <p>Paste the $DBS contract address and swap your SOL for $DBS tokens</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>HODL & Join Society</h3>
+                    <p>Welcome to the Dead Butt Society! Spread the word about anal health 💨</p>
+                </div>
+            </div>
+            <div class="contract-address">
+                <h3>Contract Address:</h3>
+                <div class="address-box">
+                    <code id="contract">33qfNgPi1DC3Ja2oAQS9dpvuVb1jFLheEmJpvA1Vpump</code>
+                    <button class="copy-btn" onclick="copyContract()">Copy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Social Links Section -->
+    <section class="section socials">
+        <div class="container">
+            <h2 class="section-title glitch" data-text="Follow Us">Follow Us</h2>
+            <div class="social-links">
+                <a href="#" class="social-link x-link">
+                    <img src="x (1).svg" alt="X (Twitter)" class="x-logo">
+                    <span>Follow on X</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>$DBS has no association with any corporation. This token is simply paying homage to a character we all love and recognize.</p>
+                <p>$DBS is a meme coin with no intrinsic value or expectation of financial return. There is no formal team or roadmap.</p>
+                <p>The meme coin is completely useless and for entertainment purposes only.</p>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Dead Butt Society. All rights reserved. 💀</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fix smooth scroll to only apply to internal anchor links, not external links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add subtle parallax effect to hero (fixed for mobile compatibility)
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            
+            if (hero && window.innerWidth > 768 && scrolled < window.innerHeight) {
+                // Only apply parallax on desktop and within hero viewport
+                hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+            } else if (hero) {
+                // Reset transform on mobile or when scrolled past hero
+                hero.style.transform = 'translateY(0)';
+            }
+            
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+
+        // Copy contract address function
+        function copyContract() {
+            const contractText = document.getElementById('contract').textContent;
+            navigator.clipboard.writeText(contractText).then(() => {
+                const copyBtn = document.querySelector('.copy-btn');
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                copyBtn.style.background = '#00ff00';
+                copyBtn.style.color = '#000';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.style.background = '';
+                    copyBtn.style.color = '';
+                }, 2000);
+            });
+        }
+
+        // Copy hero contract address function
+        function copyHeroContract() {
+            const contractText = document.getElementById('hero-contract').textContent;
+            navigator.clipboard.writeText(contractText).then(() => {
+                const copyBtn = document.querySelector('.hero-copy-btn');
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                copyBtn.style.background = '#00ff00';
+                copyBtn.style.color = '#000';
+                copyBtn.style.borderColor = '#00ff00';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.style.background = '';
+                    copyBtn.style.color = '';
+                    copyBtn.style.borderColor = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html> 
