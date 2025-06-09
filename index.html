@@ -352,8 +352,6 @@
                 gap: 1.5rem;
             }
 
-
-
             .social-links {
                 gap: 1rem;
             }
@@ -583,8 +581,6 @@
             color: #000000;
         }
 
-
-
         /* Social Links Section */
         .socials {
             background: rgba(255, 255, 255, 0.02);
@@ -725,6 +721,106 @@
                 transform: translate(2px, -2px);
             }
         }
+
+        /* Live Stats Section */
+        .live-stats {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.05), rgba(255, 255, 255, 0.02));
+            border-top: 1px solid rgba(0, 255, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+            padding: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid rgba(0, 255, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            background: rgba(0, 255, 0, 0.15);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 0, 0.6);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .stat-subtext {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .loading {
+            color: rgba(255, 255, 255, 0.5);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .error {
+            color: #ff4444;
+        }
+
+        .update-time {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -757,6 +853,36 @@
                     <img src="acf.png" alt="Anal Cancer Foundation" class="charity-logo">
                     Donate to the Anal Cancer Foundation 💨
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stats Section -->
+    <section class="section live-stats">
+        <div class="container">
+            <h2 class="section-title glitch" data-text="Live $DBS Stats">Live $DBS Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">💰</span>
+                    <div class="stat-label">Price USD</div>
+                    <div class="stat-value" id="price-value">Loading...</div>
+                    <div class="stat-subtext">Current Price</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📊</span>
+                    <div class="stat-label">Market Cap</div>
+                    <div class="stat-value" id="mcap-value">Loading...</div>
+                    <div class="stat-subtext">Total Market Value</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📈</span>
+                    <div class="stat-label">24H Volume</div>
+                    <div class="stat-value" id="volume-value">Loading...</div>
+                    <div class="stat-subtext">Trading Volume</div>
+                </div>
+            </div>
+            <div class="update-time">
+                <span id="last-updated">Last updated: Never</span>
             </div>
         </div>
     </section>
@@ -844,8 +970,6 @@
         </div>
     </section>
 
-
-
     <!-- Social Links Section -->
     <section class="section socials">
         <div class="container">
@@ -913,6 +1037,89 @@
         }
         
         window.addEventListener('scroll', requestTick, { passive: true });
+
+        // Live Stats API Integration
+        const API_URL = 'https://api.dexscreener.com/tokens/v1/solana/33qfNgPi1DC3Ja2oAQS9dpvuVb1jFLheEmJpvA1Vpump';
+        
+        // Format number with appropriate suffixes
+        function formatNumber(num) {
+            if (num >= 1e9) {
+                return (num / 1e9).toFixed(2) + 'B';
+            } else if (num >= 1e6) {
+                return (num / 1e6).toFixed(2) + 'M';
+            } else if (num >= 1e3) {
+                return (num / 1e3).toFixed(2) + 'K';
+            }
+            return num.toFixed(2);
+        }
+
+        // Format price for better readability
+        function formatPrice(price) {
+            const priceNum = parseFloat(price);
+            if (priceNum < 0.001) {
+                return priceNum.toFixed(6);
+            } else if (priceNum < 1) {
+                return priceNum.toFixed(4);
+            }
+            return priceNum.toFixed(2);
+        }
+
+        // Fetch live stats from DexScreener API
+        async function fetchLiveStats() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                if (data && data.length > 0) {
+                    const tokenData = data[0];
+                    
+                    // Update price
+                    const priceElement = document.getElementById('price-value');
+                    const price = tokenData.priceUsd;
+                    priceElement.textContent = '$' + formatPrice(price);
+                    priceElement.className = 'stat-value';
+                    
+                    // Update market cap
+                    const mcapElement = document.getElementById('mcap-value');
+                    const marketCap = tokenData.marketCap || tokenData.fdv;
+                    mcapElement.textContent = '$' + formatNumber(marketCap);
+                    mcapElement.className = 'stat-value';
+                    
+                    // Update 24h volume
+                    const volumeElement = document.getElementById('volume-value');
+                    const volume = tokenData.volume?.h24 || 0;
+                    volumeElement.textContent = '$' + formatNumber(volume);
+                    volumeElement.className = 'stat-value';
+                    
+                    // Update last updated time
+                    const lastUpdatedElement = document.getElementById('last-updated');
+                    const now = new Date();
+                    lastUpdatedElement.textContent = `Last updated: ${now.toLocaleTimeString()}`;
+                    
+                } else {
+                    throw new Error('No data received');
+                }
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+                
+                // Show error state
+                document.getElementById('price-value').textContent = 'Error';
+                document.getElementById('mcap-value').textContent = 'Error';
+                document.getElementById('volume-value').textContent = 'Error';
+                
+                document.getElementById('price-value').className = 'stat-value error';
+                document.getElementById('mcap-value').className = 'stat-value error';
+                document.getElementById('volume-value').className = 'stat-value error';
+                
+                document.getElementById('last-updated').textContent = 'Failed to fetch data';
+            }
+        }
+
+        // Initial load
+        fetchLiveStats();
+        
+        // Update stats every 30 seconds
+        setInterval(fetchLiveStats, 30000);
 
         // Copy contract address function
         function copyContract() {
