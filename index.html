@@ -141,6 +141,28 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
+        /* Charity button with logo */
+        .charity-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            justify-content: center;
+            padding: 12px 25px;
+            min-width: 280px;
+        }
+
+        .charity-logo {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
+        }
+
+        .charity-btn:hover .charity-logo {
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+            transform: scale(1.1);
+        }
+
         /* Hero Contract Address */
         .hero-ca {
             margin: 2rem 0;
@@ -370,6 +392,19 @@
             .secondary-btn {
                 font-size: 0.9rem;
                 padding: 10px 25px;
+            }
+
+            .charity-btn {
+                min-width: auto;
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .charity-logo {
+                width: 20px;
+                height: 20px;
             }
         }
 
@@ -711,11 +746,12 @@
                    rel="noopener noreferrer">
                     Buy on Jupiter
                 </a>
-                <a href="#" 
-                   class="buy-button secondary-btn" 
+                <a href="https://www.analcancerfoundation.org/donate/" 
+                   class="buy-button secondary-btn charity-btn" 
                    target="_blank" 
                    rel="noopener noreferrer">
-                    Join our X community to donate some farts 💨
+                    <img src="acf.png" alt="Anal Cancer Foundation" class="charity-logo">
+                    Donate to the Anal Cancer Foundation 💨
                 </a>
             </div>
         </div>
