@@ -821,6 +821,129 @@
             color: rgba(255, 255, 255, 0.5);
             font-style: italic;
         }
+
+        /* Fart Section Styles */
+        .fart-section {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(101, 67, 33, 0.05));
+            border-top: 1px solid rgba(139, 69, 19, 0.3);
+            border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fart-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .fart-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .fart-interactive {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .fart-image {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 20px rgba(139, 69, 19, 0.5));
+        }
+
+        .fart-image:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(139, 69, 19, 0.8));
+        }
+
+        .fart-image:active {
+            transform: scale(0.95);
+        }
+
+        .smoke-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            border-radius: 15px;
+            background: radial-gradient(circle at center, 
+                rgba(139, 69, 19, 0.8) 0%, 
+                rgba(101, 67, 33, 0.6) 20%, 
+                rgba(160, 82, 45, 0.4) 40%, 
+                rgba(210, 180, 140, 0.2) 60%, 
+                transparent 80%);
+            transition: opacity 0.5s ease;
+        }
+
+        .smoke-effect.active {
+            opacity: 1;
+            animation: smokeAnimation 3s ease-out;
+        }
+
+        @keyframes smokeAnimation {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Smoke particles */
+        .smoke-effect::before,
+        .smoke-effect::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(139, 69, 19, 0.6);
+            border-radius: 50%;
+            animation: float 3s ease-out;
+        }
+
+        .smoke-effect::before {
+            top: 30%;
+            left: 20%;
+            animation-delay: 0.2s;
+        }
+
+        .smoke-effect::after {
+            top: 40%;
+            right: 25%;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-20px) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -890,9 +1013,23 @@
     <!-- Lore Section -->
     <section class="section lore">
         <div class="container">
-            <h2 class="section-title glitch" data-text="The Story of Bob">The Story of Bob</h2>
+            <h2 class="section-title glitch" data-text="The Story of DBS">The Story of DBS</h2>
             <div class="lore-content">
-                <p>a long time ago, in a land far far away, there lived a man named bob. bob liked to fart. one day, he decided to start a coin based on his farts. at first, people thought it was a joke, but as the coin gained popularity, bob realized he could use it to make a positive impact on the world. he started the "dead butt society" and used the coin to fund research into anal health. soon, the coin had created a movement. people from all over the world were talking about the importance of taking care of their anuses. bob became known as a hero and a pioneer in the field of anal care. he proved that even the most unlikely of things could be a force for good</p>
+                <p>a long time ago, in a land far far away, there lived a man named bob. bob liked to fart. one day, he decided to start a coin based on his farts. at first, people thought it was a joke, but as the coin gained popularity, bob realized he could use it to make a positive impact on the world. he started the <mark style="background-color: #ffff00; color: #000000; padding: 2px 4px;">"dead butt society"</mark> and used the coin to fund research into anal health. soon, the coin had created a movement. people from all over the world were talking about the importance of taking care of their anuses. bob became known as a hero and a pioneer in the field of anal care. he proved that even the most unlikely of things could be a force for good</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Fart Section -->
+    <section class="section fart-section">
+        <div class="container">
+            <h2 class="section-title glitch" data-text="The Gas Chamber">The Gas Chamber</h2>
+            <div class="fart-content">
+                <p>Click Bob's legendary fart to experience the power of the Dead Butt Society! 💨</p>
+                <div class="fart-interactive" id="fartContainer">
+                    <img src="fart.png" alt="Epic Fart" class="fart-image" id="fartImage" onclick="triggerFart()">
+                    <div class="smoke-effect" id="smokeEffect"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -1156,6 +1293,83 @@
                 }, 2000);
             });
         }
+
+        // Interactive Fart Function
+        function triggerFart() {
+            // Play the real fart sound effect
+            try {
+                // Play the actual fart sound file
+                const fartAudio = new Audio('fart-sound.mp3');
+                fartAudio.volume = 0.7; // Set volume to 70%
+                fartAudio.play().catch(error => {
+                    console.log('Audio playback failed:', error);
+                    // Fallback to generated sound if file fails to load
+                    playFallbackSound();
+                });
+                
+            } catch (error) {
+                console.log('Audio playback failed:', error);
+                // Fallback to generated sound
+                playFallbackSound();
+            }
+            
+            // Trigger smoke effect and visual animations
+            const smokeEffect = document.getElementById('smokeEffect');
+            const fartImage = document.getElementById('fartImage');
+            
+            // Remove any existing animation
+            smokeEffect.classList.remove('active');
+            
+            // Trigger reflow to restart animation
+            smokeEffect.offsetHeight;
+            
+            // Add smoke effect
+            smokeEffect.classList.add('active');
+            
+            // Shake the fart image
+            fartImage.style.animation = 'shake 0.5s ease-in-out';
+            
+            // Remove animation after it completes
+            setTimeout(() => {
+                fartImage.style.animation = '';
+                smokeEffect.classList.remove('active');
+            }, 3000);
+        }
+
+        // Fallback sound function (in case the audio file doesn't load)
+        function playFallbackSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.5);
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+                
+            } catch (fallbackError) {
+                console.log('Fallback audio also failed:', fallbackError);
+            }
+        }
+
+        // Add shake animation CSS
+        const shakeStyle = document.createElement('style');
+        shakeStyle.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(shakeStyle);
     </script>
 </body>
 </html> 
